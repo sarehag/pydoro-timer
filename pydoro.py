@@ -5,9 +5,10 @@ import datetime
 import configparser
 
 config = configparser.ConfigParser()
-config.read('pydoro.ini')
+homePath = os.path.dirname(os.path.realpath(__file__))+'/'
+config.read(homePath + 'pydoro.ini')
 
-soundpath = config["SETTINGS"]["soundpath"]
+soundpath = homePath + config["SETTINGS"]["soundpath"]
 segments = int(config["SETTINGS"]["segments"])
 breaklength = int(config["SETTINGS"]["breaklength"])
 setbreaklength = int(config["SETTINGS"]["setbreaklength"])
