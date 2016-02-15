@@ -15,19 +15,26 @@ setbreaklength = int(config["SETTINGS"]["setbreaklength"])
 worklength = int(config["SETTINGS"]["worklength"])
 
 
-def runSegment(minutes, displayTime):
+def runSegment(minutes, displayTime, isBreak):
+    message = ''
+    if(displayTime):
+        printTime()
+    if(isBreak):
+        message += ' Break, '
+    else:
+        message += ' Work, '
+    message += str(minutes) + ' minutes'
+    print(message)
     time.sleep(minutes*60)
     os.system("aplay " + soundpath + " -q")
-    if(displayTime):
-        printTime();
 
 def printTime():
     now = time.asctime( time.localtime(time.time()) )
-    print(now);
+    print(now)
 
 for x in range(1, segments + 1):
-    runSegment(worklength, True)
+    runSegment(worklength, True, False)
     if x == segments:
-        runSegment(setbreaklength, True)
+        runSegment(setbreaklength, True, True)
     else:
-        runSegment(breaklength, True)
+        runSegment(breaklength, True, True)
