@@ -1,9 +1,9 @@
 import unittest
 from Tasks.Task import Task
 
-class TestDatabase(unittest.TestCase):
+class TestTask(unittest.TestCase):
 
-    def test_insert_one(self):
+    def test_construction(self):
         myTask = Task("My Task")
         self.assertEqual(myTask.title,"My Task")
 

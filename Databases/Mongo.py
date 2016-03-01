@@ -11,6 +11,7 @@ class Database:
     def read(self, collection, query):
         return self.db[collection].find_one(query)
 
-
+    def update(self, collection, query, document):
+        return self.db[collection].update_one(query, {'$set': document})
 
 
